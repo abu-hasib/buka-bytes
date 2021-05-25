@@ -2,15 +2,21 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { useHistory } from "react-router";
 
 const navigation = [
-  { name: "Food", href: "#" },
+  { name: "Food", href: "/food" },
   { name: "Laundry", href: "#" },
   { name: "Pharmacy", href: "#" },
   { name: "Grocery", href: "#" },
 ];
 
 export default function Home() {
+  let history = useHistory()
+
+  function onNavigate() {
+    history.push(`/food`)
+  }
   return (
     <Popover className="bg-white overflow-hidden">
       {({ open }) => (
@@ -133,6 +139,7 @@ export default function Home() {
                       <a
                         href="#"
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                        onClick={onNavigate}
                       >
                         Get started
                       </a>
