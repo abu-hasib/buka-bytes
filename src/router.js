@@ -10,7 +10,6 @@ import Food  from "./components/Food";
 
 const Navigation = () => {
     return (
-        <div>
             
 <Router>
 <Switch>
@@ -18,7 +17,6 @@ const Navigation = () => {
           <Route path="/" component={Home} />
         </Switch>
 </Router>
-        </div>
     )
 }
 
