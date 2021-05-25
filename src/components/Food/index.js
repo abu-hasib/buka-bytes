@@ -12,21 +12,24 @@ const foodItems = [
 
 const Food = () => {
   return (
-    <div className="container mx-auto w-max pt-10">
-      <div className="flex flex-wrap justify-between">
+    <div className="container mx-auto pt-10">
+      <div className="flex flex-wrap justify-evenly">
         {foodItems.map((item, key) => {
           return (
-            <div key={key} className="flex p-6 rounded-lg shadow-lg mb-10">
-              <div className="flex-none w-44 relative">
+            <div
+              key={key}
+              className="flex flex-col md:flex-row w-auto p-6 rounded-lg shadow-lg mb-10"
+            >
+              <div className="flex-none w-60 md:w-44 relative mb-7">
                 <img
                   src={foodavi}
                   alt=""
-                  className="absolute inset-0 w-full h-full object-cover rounded-lg"
+                  className="w-full h-full object-cover object-center rounded-lg"
                 />
               </div>
-              <form className="flex-auto pl-6">
+              <form className="flex-auto pl-6 items-start">
                 <div className="flex flex-wrap items-baseline">
-                  <h1 className="w-full flex-none font-semibold mb-2.5">
+                  <h1 className="w-full flex-none font-semibold text-xl md:text-2xl mb-2.5">
                     {item.item}
                   </h1>
                   <div className="text-4xl leading-7 font-bold text-purple-600">
@@ -56,33 +59,6 @@ const Food = () => {
                         value="s"
                       />
                       S
-                    </label>
-                    <label>
-                      <input
-                        className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-gray-200"
-                        name="size"
-                        type="radio"
-                        value="m"
-                      />
-                      M
-                    </label>
-                    <label>
-                      <input
-                        className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-gray-200"
-                        name="size"
-                        type="radio"
-                        value="l"
-                      />
-                      L
-                    </label>
-                    <label>
-                      <input
-                        className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-gray-200"
-                        name="size"
-                        type="radio"
-                        value="xl"
-                      />
-                      XL
                     </label>
                   </div>
                   {/* <div className="ml-3 text-sm text-gray-500 underline">
