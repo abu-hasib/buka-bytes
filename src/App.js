@@ -1,7 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from "./components/Nav";
-import Navigation from './router';
+import "./App.css";
+import Navigation from "./router";
 
 function App() {
   return (
