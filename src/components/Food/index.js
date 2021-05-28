@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import foodavi from "../../images/food.jpg";
 
 const foodItems = [
-  { imgUrl: foodavi, item: "Amala", price: "#50" },
-  { imgUrl: foodavi, item: "Rice", price: "#70" },
-  { imgUrl: foodavi, item: "Iyan", price: "#100" },
-  { imgUrl: foodavi, item: "Fufu", price: "#200" },
-  { imgUrl: foodavi, item: "Ogufe", price: "#400" },
-  { imgUrl: foodavi, item: "Beans", price: "#400" },
+  { imgUrl: foodavi, item: "Amala", price: "#50", city: "Lagos" },
+  { imgUrl: foodavi, item: "Rice", price: "#70", city: "Abuja" },
+  { imgUrl: foodavi, item: "Iyan", price: "#100", city: "Lagos" },
+  { imgUrl: foodavi, item: "Fufu", price: "#200", city: "Kano" },
+  { imgUrl: foodavi, item: "Ogufe", price: "#400", city: "Lagos" },
+  { imgUrl: foodavi, item: "Beans", price: "#400", city: "Ibadan" },
 ];
 
 const Food = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+
+  function onSearchChange(e) {
+    // console.log(e.target.value);
+    setSearchTerm(e.target.value);
+  }
+
   return (
     // <div className="container mx-auto">
     <div className="grid grid-cols-12 grid-rows-2 h-screen">
@@ -18,6 +25,7 @@ const Food = () => {
         <input
           className="w-96 h-8 rounded-2xl outline-none p-4 ml-auto"
           placeholder="Search city"
+          onChange={onSearchChange}
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -31,7 +39,7 @@ const Food = () => {
       </div>
       <div className="col-start-3 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
         <div className="flex flex-wrap justify-evenly">
-          {foodItems.map((item, key) => {
+          {foodItems.filter(isSearched(searchTerm)).map((item, key) => {
             return (
               <div
                 key={key}
@@ -125,5 +133,8 @@ const Food = () => {
     // </div>
   );
 };
+
+const isSearched = (searchTerm) => (item) =>
+  !searchTerm || item.city.toLowerCase().includes(searchTerm.toLowerCase());
 
 export default Food;
