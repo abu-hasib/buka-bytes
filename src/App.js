@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import Home from "./components/Nav";
+import "./App.css";
+import Navigation from "./router";
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      {/* <Home /> */}
+      <Navigation />
     </div>
   );
 }
