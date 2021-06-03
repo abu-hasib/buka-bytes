@@ -1,20 +1,26 @@
 import React, { useState } from "react";
-import foodavi from "../../images/food.jpg";
+import foodavi from "images/food.jpg";
 import CartIcon from "@heroicons/react/outline/ShoppingCartIcon";
 import Cart from "../Cart";
 
 const foodItems = [
-  { id: 1, imgUrl: foodavi, item: "Amala", price: "₦50", city: "Lagos" },
-  { id: 2, imgUrl: foodavi, item: "Rice", price: "₦70", city: "Abuja" },
-  { id: 3, imgUrl: foodavi, item: "Iyan", price: "₦100", city: "Lagos" },
-  { id: 4, imgUrl: foodavi, item: "Fufu", price: "₦200", city: "Kano" },
-  { id: 5, imgUrl: foodavi, item: "Ogufe", price: "₦400", city: "Lagos" },
-  { id: 6, imgUrl: foodavi, item: "Beans", price: "₦400", city: "Ibadan" },
+  {
+    id: 1,
+    imgUrl: foodavi,
+    item: "Amala",
+    price: 50,
+    city: "Lagos",
+  },
+  { id: 2, imgUrl: foodavi, item: "Rice", price: 70, city: "Abuja" },
+  { id: 3, imgUrl: foodavi, item: "Iyan", price: 100, city: "Lagos" },
+  { id: 4, imgUrl: foodavi, item: "Fufu", price: 200, city: "Kano" },
+  { id: 5, imgUrl: foodavi, item: "Ogufe", price: 400, city: "Lagos" },
+  { id: 6, imgUrl: foodavi, item: "Beans", price: 400, city: "Ibadan" },
 ];
 
 const Food = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [cart, setCart] = useState([]);
 
   function onSearchChange(e) {
@@ -55,10 +61,10 @@ const Food = () => {
           onChange={onSearchChange}
         />
         <div onClick={onCartOpenClick} className="ml-auto relative">
-          <CartIcon className=" w-8 h-8 ml-auto relative"></CartIcon>
-          {foodItems.length > 1 && (
-            <span className="absolute top-5 right-0.5 text-white rounded-full bg-red-700 p-1 h-8 w-8">
-              {foodItems.length}
+          <CartIcon className=" w-8 h-8 ml-auto"></CartIcon>
+          {cart.length > 0 && (
+            <span className="absolute top-5 right-0.5 text-white rounded-full bg-red-600 flex items-center justify-center h-8 w-8">
+              {cart.length}
             </span>
           )}
         </div>
@@ -86,7 +92,7 @@ const Food = () => {
                       {item.item}
                     </h1>
                     <div className="text-4xl leading-7 font-bold text-purple-600">
-                      {item.price}
+                      ₦{item.price}
                     </div>
                     <div className="text-sm font-medium text-gray-400 ml-3">
                       In stock
