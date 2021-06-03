@@ -1,10 +1,7 @@
 import ShoppingCartIcon from "@heroicons/react/outline/ShoppingCartIcon";
-import React, { useState } from "react";
+import React from "react";
 
 const Cart = ({ open, cartItems }) => {
-  // const [total, setTotal] = useState(0);
-
-  // tota(cartItems);
   return (
     <div
       hidden={open}
@@ -51,14 +48,6 @@ const Cart = ({ open, cartItems }) => {
       </button>
     </div>
   );
-};
-
-const Total = ({ cart }) => {
-  const total = cart.reduce((acc, curr, index, cart) => {
-    console.log(`prev: ${acc} + curr: ${curr.price}`);
-    return acc + curr.price * curr.quantity;
-  }, 0);
-  return <span>{formatCurrency(total)}</span>;
 };
 
 const total = (cart) =>
