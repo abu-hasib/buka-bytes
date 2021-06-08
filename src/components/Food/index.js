@@ -1,64 +1,98 @@
 import React, { useState } from "react";
-import foodavi from "../../images/food.jpg";
+import foodavi from "images/food.jpg";
+import CartIcon from "@heroicons/react/outline/ShoppingCartIcon";
+import Cart from "../Cart";
 
 const foodItems = [
-  { imgUrl: foodavi, item: "Amala", price: "#50", city: "Lagos" },
-  { imgUrl: foodavi, item: "Rice", price: "#70", city: "Abuja" },
-  { imgUrl: foodavi, item: "Iyan", price: "#100", city: "Lagos" },
-  { imgUrl: foodavi, item: "Fufu", price: "#200", city: "Kano" },
-  { imgUrl: foodavi, item: "Ogufe", price: "#400", city: "Lagos" },
-  { imgUrl: foodavi, item: "Beans", price: "#400", city: "Ibadan" },
+  {
+    id: 1,
+    imgUrl: foodavi,
+    item: "Amala",
+    price: 50,
+    city: "Lagos",
+  },
+  { id: 2, imgUrl: foodavi, item: "Rice", price: 70, city: "Abuja" },
+  { id: 3, imgUrl: foodavi, item: "Iyan", price: 100, city: "Lagos" },
+  { id: 4, imgUrl: foodavi, item: "Fufu", price: 200, city: "Kano" },
+  { id: 5, imgUrl: foodavi, item: "Ogufe", price: 400, city: "Lagos" },
+  { id: 6, imgUrl: foodavi, item: "Beans", price: 400, city: "Ibadan" },
 ];
 
 const Food = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [open, setOpen] = useState(true);
+  const [cart, setCart] = useState([]);
 
   function onSearchChange(e) {
     // console.log(e.target.value);
     setSearchTerm(e.target.value);
   }
 
+  function onCartOpenClick() {
+    setOpen(!open);
+  }
+
+  function addToCart(item) {
+    const updatedCart = cart;
+    const updatedItemIndex = updatedCart.findIndex(
+      (itemInCart) => itemInCart.id === item.id
+    );
+
+    if (updatedItemIndex < 0) {
+      updatedCart.push({ ...item, quantity: 1 });
+    } else {
+      const updatedItem = {
+        ...updatedCart[updatedItemIndex],
+      };
+      updatedItem.quantity++;
+      updatedCart[updatedItemIndex] = updatedItem;
+    }
+
+    setCart(() => [...updatedCart]);
+  }
+
   return (
     // <div className="container mx-auto">
     <div className="grid grid-cols-12 grid-rows-2 h-screen">
-      <div className="flex justify-around items-center bg-green-300 col-start-3 col-end-13 row-start-1 h-12 sticky z-50">
+      <div className="flex justify-center items-center bg-green-300 sm:col-start-3 col-start-1 col-end-13 row-start-1 h-12 sticky z-50">
         <input
-          className="w-96 h-8 rounded-2xl outline-none p-4 ml-auto"
+          className="md:w-96 h-8 rounded-2xl outline-none p-4 ml-auto"
           placeholder="Search city"
           onChange={onSearchChange}
         />
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5 ml-auto"
-          viewBox="0 0 20 20"
-          fill="currentColor"
-        >
-          <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-        </svg>
+        <div onClick={onCartOpenClick} className="ml-auto relative">
+          <CartIcon className=" w-8 h-8 ml-auto"></CartIcon>
+          {cart.length > 0 && (
+            <span className="absolute top-5 right-0.5 text-white rounded-full bg-red-600 flex items-center justify-center h-8 w-8">
+              {cart.length}
+            </span>
+          )}
+        </div>
         <img className="rounded-full h-8 w-8 mr-3 ml-3" src={foodavi} alt="" />
       </div>
-      <div className="col-start-3 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
+      <div className="relative sm:col-start-3 col-start-1 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
+        <Cart open={open} cartItems={cart} />
         <div className="flex flex-wrap justify-evenly">
           {foodItems.filter(isSearched(searchTerm)).map((item, key) => {
             return (
               <div
                 key={key}
-                className="flex flex-col md:flex-row w-auto p-6 rounded-lg shadow-lg mb-10"
+                className="flex flex-col md:flex-row p-5 rounded-lg shadow-lg mb-10"
               >
-                <div className="flex-none w-60 md:w-44 relative mb-7">
+                <div className="flex w-72 md:w-44 mb-7">
                   <img
                     src={foodavi}
                     alt=""
-                    className="w-full h-full object-cover object-center rounded-lg"
+                    className="inset-0 w-full h-full object-cover object-center rounded-lg mx-auto"
                   />
                 </div>
-                <form className="flex-auto pl-6 items-start">
+                <form className="flex-auto pl-0 md:pl-4">
                   <div className="flex flex-wrap items-baseline">
-                    <h1 className="w-full flex-none font-semibold text-xl md:text-2xl mb-2.5">
+                    <h1 className="w-full flex-none font-semibold text-xl text-left mb-2.5">
                       {item.item}
                     </h1>
                     <div className="text-4xl leading-7 font-bold text-purple-600">
-                      {item.price}
+                      ₦{item.price}
                     </div>
                     <div className="text-sm font-medium text-gray-400 ml-3">
                       In stock
@@ -90,17 +124,18 @@ const Food = () => {
                     Size Guide
                   </div> */}
                   </div>
-                  <div className="flex space-x-3 mb-4 text-sm font-semibold">
+                  <div className="flex space-x-1 mb-4 text-sm font-semibold">
                     <div className="flex-auto flex space-x-3">
                       <button
-                        className="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white"
+                        className="w-2/3 flex items-center justify-center rounded-full bg-purple-700 text-white"
                         type="submit"
                       >
                         Buy now
                       </button>
                       <button
-                        className="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700"
+                        className="w-9/12 flex items-center justify-center rounded-full bg-purple-50 text-purple-700"
                         type="button"
+                        onClick={() => addToCart(item)}
                       >
                         Add to cart
                       </button>
@@ -120,7 +155,7 @@ const Food = () => {
                     </button>
                   </div>
                   <p className="text-sm text-gray-500">
-                    Free shipping on all local orders.
+                    Free delivery on all local orders.
                   </p>
                 </form>
               </div>
@@ -128,7 +163,7 @@ const Food = () => {
           })}
         </div>
       </div>
-      <div className="bg-red-400 row-start-1 col-span-2 min-h-screen"></div>
+      <div className="bg-red-400 row-start-1 col-span-2 min-h-screen sm:block hidden"></div>
     </div>
     // </div>
   );
