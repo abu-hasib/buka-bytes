@@ -1,11 +1,18 @@
 import ShoppingCartIcon from "@heroicons/react/outline/ShoppingCartIcon";
-import React from "react";
+import Pay from "components/Pay";
+import React, { useState, useEffect } from "react";
 
 const Cart = ({ open, cartItems }) => {
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(handleTotal(cartItems));
+  }, [cartItems]);
+
   return (
     <div
       hidden={open}
-      className="absolute top-14 right-10 w-72 p-7 rounded-md z-30 bg-white shadow-2xl mt-2 divide-gray-700"
+      className="fixed top-14 right-10 w-72 p-7 rounded-md z-30 bg-white shadow-2xl mt-2 divide-gray-700"
     >
       <div className="flex justify-between items-center mb-8 pb-4 border-b">
         <div className="inline-flex">
@@ -18,7 +25,7 @@ const Cart = ({ open, cartItems }) => {
           Total:{" "}
           <span className="font-light text-green-300">
             {/* <Total cart={cartItems}></Total> */}
-            {formatCurrency(total(cartItems))}
+            {formatCurrency(handleTotal(cartItems))}
           </span>
         </p>
       </div>
@@ -40,19 +47,20 @@ const Cart = ({ open, cartItems }) => {
           </li>
         ))}
       </ul>
-      <button
+      {/* <button
         type="button"
         className="bg-green-100 text-green-600 text-base font-semibold px-6 py-2 rounded-lg"
       >
         Checkout
-      </button>
+      </button> */}
+      <Pay amount={total} />
     </div>
   );
 };
 
-const total = (cart) =>
+const handleTotal = (cart) =>
   cart.reduce((acc, curr, index, cart) => {
-    console.log(`prev: ${acc} + curr: ${curr.price}`);
+    // console.log(`prev: ${acc} + curr: ${curr.price}`);
     return acc + curr.price * curr.quantity;
   }, 0);
 
