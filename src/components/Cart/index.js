@@ -1,6 +1,7 @@
 import ShoppingCartIcon from "@heroicons/react/outline/ShoppingCartIcon";
 import Pay from "components/Pay";
 import React, { useState, useEffect } from "react";
+import { formatCurrency } from "../global";
 
 const Cart = ({ open, cartItems }) => {
   const [total, setTotal] = useState(0);
@@ -58,7 +59,7 @@ const Cart = ({ open, cartItems }) => {
         onChange={handleOnChange}
         defaultValue={email}
       />
-      {/* <Pay amount={total} email={email} disabled={total <= 0} /> */}
+      <Pay amount={total} email={email} disabled={total <= 0} />
     </div>
   );
 };
@@ -68,14 +69,5 @@ const handleTotal = (cart) =>
     // console.log(`prev: ${acc} + curr: ${curr.price}`);
     return acc + curr.price * curr.quantity;
   }, 0);
-
-const formatCurrency = (number) => {
-  const formatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-  });
-
-  return formatter.format(number);
-};
 
 export default Cart;

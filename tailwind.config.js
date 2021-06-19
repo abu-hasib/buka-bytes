@@ -3,7 +3,17 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   important: true,
   theme: {
-    extend: {},
+    extend: {
+      animation: { glide: "glide 15s ease infinite" },
+      keyframes: {
+        glide: {
+          "0%": { transform: "translateX(-25%)" },
+          "100%": {
+            transform: "translateX(25%)",
+          },
+        },
+      },
+    },
   },
   variants: {
     extend: {},

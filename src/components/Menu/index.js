@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import isSearched from "../global";
+import React from "react";
+import { isSearched } from "../global";
 
 const Menu = ({ foodItems, addToCart, searchTerm }) => {
   //   console.log(foodavi);
   return (
-    <div className="flex flex-wrap justify-evenly">
+    <div className="transition duration-500 ease-in-out flex flex-wrap justify-evenly">
       {foodItems.filter(isSearched(searchTerm)).map((item, key) => {
         return (
           <div

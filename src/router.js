@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 import Home from "./components/Nav";
 import Food from "./components/Food";
-import Menu from "./components/Menu";
 
 const Res = () => {
   return <div>Restaurant!</div>;
@@ -39,27 +38,6 @@ const routes = [
     path: "/",
     exact: true,
     component: Home,
-  },
-];
-
-const subRoutes = [
-  {
-    path: "/dashboard",
-    component: Food,
-    routes: [
-      {
-        path: "/dashboard/restaurants",
-        component: Res,
-      },
-      {
-        path: "/dashboard/food",
-        component: Good,
-      },
-      {
-        path: "/dashboard/about",
-        component: About,
-      },
-    ],
   },
 ];
 

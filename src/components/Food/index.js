@@ -1,39 +1,11 @@
 import React, { useState } from "react";
 import foodavi from "images/food.jpg";
 import CartIcon from "@heroicons/react/outline/ShoppingCartIcon";
-import HomeIcon from "@heroicons/react/outline/HomeIcon";
-import InfoIcon from "@heroicons/react/outline/InformationCircleIcon";
-import Cart from "../Cart";
-import ServerIcon from "@heroicons/react/outline/ServerIcon";
-import { Link } from "react-router-dom";
-import { DashPages, GotoLink } from "router";
-import Menu from "components/Menu";
 
-const foodItems = [
-  {
-    id: 1,
-    imgUrl: foodavi,
-    item: "Amala",
-    price: 50,
-    city: "Lagos",
-  },
-  { id: 2, imgUrl: foodavi, item: "Rice", price: 70, city: "Abuja" },
-  { id: 3, imgUrl: foodavi, item: "Iyan", price: 100, city: "Lagos" },
-  { id: 4, imgUrl: foodavi, item: "Fufu", price: 200, city: "Kano" },
-  { id: 5, imgUrl: foodavi, item: "Ogufe", price: 400, city: "Lagos" },
-  { id: 6, imgUrl: foodavi, item: "Beans", price: 400, city: "Ibadan" },
-];
-
-const menu = [
-  {
-    title: "Restaurant",
-    icon: HomeIcon,
-    to: "/dashboard/restaurants",
-    activeOnlyWhenExact: true,
-  },
-  { title: "Food", icon: ServerIcon, to: "/dashboard/food" },
-  { title: "About", icon: InfoIcon, to: "/dashboard/about" },
-];
+import Main from "components/Main";
+import { foodItems } from "../global";
+import Sidebar from "components/Sidebar";
+import Cart from "components/Cart";
 
 const Food = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -104,45 +76,13 @@ const Food = () => {
         </div>
         <img className="rounded-full h-8 w-8 mr-3 ml-3" src={foodavi} alt="" />
       </div>
-      <div className="relative sm:col-start-3 col-start-1 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
-        {/* <Cart open={open} cartItems={cart} /> */}
-        {/* <Menu
-          foodItems={foodItems}
-          addToCart={addToCart}
-          searchTerm={searchTerm}
-        /> */}
-        <DashPages />
-      </div>
-      <div className="row-start-1 col-span-2 bg-green-600 min-h-screen sm:block hidden py-3 px-2">
-        <div className="flex justify-start items-center mb-6">
-          <img
-            className="h-10 w-auto sm:h-10"
-            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-            alt=""
-          />
-          <h1 className="inline text-3xl text-white font-semibold ml-2">
-            easywire
-          </h1>
-        </div>
-        <ul className="text-white text-left">
-          {menu.map((item, key) => {
-            return (
-              <GotoLink key={key} link={item} />
-              // <li
-              //   key={key}
-              //   className="font-normal py-2 px-2 my-3 rounded-md w-full bg-gray-700 bg-opacity-20"
-              // >
-              //   <Link to="/">
-              //     {<item.icon className="h-6 w-6 inline" />}
-              //     {/* <a href="" className="pl-3 text-base"> */}
-              //     {item.title}
-              //     {/* </a> */}
-              //   </Link>
-              // </li>
-            );
-          })}
-        </ul>
-      </div>
+      <Cart open={open} cartItems={cart} />
+      <Main
+        foodItems={foodItems}
+        addToCart={addToCart}
+        searchTerm={searchTerm}
+      />
+      <Sidebar />
     </div>
     // </div>
   );
