@@ -23,12 +23,12 @@ const About = () => {
 
 const routes = [
   {
-    path: "/dashboard",
-    component: Food,
-  },
-  {
     path: "/restaurants",
     component: Home,
+  },
+  {
+    path: "/dashboard",
+    component: Food,
   },
   // {
   //   path: "/about",

@@ -2,21 +2,18 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useHistory } from "react-router";
 
 const navigation = [
-  { name: "Food", href: "/food" },
+  { name: "Food", href: "/dashboard/food" },
   { name: "Laundry", href: "#" },
   { name: "Pharmacy", href: "#" },
   { name: "Grocery", href: "#" },
 ];
 
 export default function Home() {
-  let history = useHistory();
-
-  function onNavigate() {
-    history.push(`/food`);
-  }
+  // function onNavigate() {
+  //   history.push("/dashboard/food");
+  // }
   return (
     <Popover className="bg-white overflow-hidden">
       {({ open }) => (
@@ -126,7 +123,7 @@ export default function Home() {
                 <div className="sm:text-center lg:text-left">
                   <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
                     <span className="block xl:inline">Good and Safe food</span>{" "}
-                    <span className="block text-indigo-600 xl:inline">
+                    <span className="block text-green-500 xl:inline">
                       at your comfort
                     </span>
                   </h1>
@@ -138,9 +135,9 @@ export default function Home() {
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
                       <a
-                        href="/"
-                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                        onClick={onNavigate}
+                        href="/dashboard/food"
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10"
+                        // onClick={onNavigate}
                       >
                         Get started
                       </a>
@@ -148,7 +145,7 @@ export default function Home() {
                     <div className="mt-3 sm:mt-0 sm:ml-3">
                       <a
                         href="/"
-                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10"
                       >
                         See more
                       </a>

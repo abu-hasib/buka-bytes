@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import foodavi from "images/food.jpg";
 import CartIcon from "@heroicons/react/outline/ShoppingCartIcon";
 
@@ -11,6 +11,10 @@ const Food = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(true);
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    // history.push("/dashboard/food");
+  });
 
   function onSearchChange(e) {
     // console.log(e.target.value);

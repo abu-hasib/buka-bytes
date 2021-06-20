@@ -5,7 +5,7 @@ import "./index.css";
 
 const Main = ({ foodItems, addToCart, searchTerm }) => {
   return (
-    <div className="relative sm:col-start-3 col-start-1 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
+    <div className="transition-transform translate-y-16 relative sm:col-start-3 col-start-1 col-end-13 row-start-1 pt-16 overflow-scroll min-h-screen">
       {/* <Cart open={open} cartItems={cart} /> */}
       {/* <Menu
           foodItems={foodItems}
