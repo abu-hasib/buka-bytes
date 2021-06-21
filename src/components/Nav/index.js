@@ -2,6 +2,8 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import veggies from "../../images/veggieshome.jpg";
+import "./index.css";
 
 const navigation = [
   { name: "Food", href: "/dashboard/food" },
@@ -10,10 +12,23 @@ const navigation = [
   { name: "Grocery", href: "#" },
 ];
 
+// function sleep(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
+
 export default function Home() {
-  // function onNavigate() {
-  //   history.push("/dashboard/food");
-  // }
+  // const [entry, setEntry] = useState(true);
+
+  // const handleShuffle = async () => {
+  //   console.log("before animating...");
+  //   setEntry(!entry);
+
+  //   await sleep(20000);
+  //   // setEntry(!entry);
+  // };
+
+  // handleShuffle();
+
   return (
     <Popover className="bg-white overflow-hidden">
       {({ open }) => (
@@ -121,8 +136,18 @@ export default function Home() {
 
               <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                 <div className="sm:text-center lg:text-left">
-                  <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                    <span className="block xl:inline">Good and Safe food</span>{" "}
+                  <h1
+                    className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+                    // onChange={handleShuffle}
+                  >
+                    <span
+                      className={
+                        // (entry ? "text-animate" : "text-animate-exit") +
+                        "test mb-5 block xl:inline"
+                      }
+                    >
+                      Good and Safe food
+                    </span>{" "}
                     <span className="block text-green-500 xl:inline">
                       at your comfort
                     </span>
@@ -157,8 +182,8 @@ export default function Home() {
           </div>
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <img
-              className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+              className="animate-bounceIn h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+              src={veggies}
               alt=""
             />
           </div>

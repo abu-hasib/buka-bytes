@@ -4,12 +4,12 @@ import { isSearched } from "../global";
 const Menu = ({ foodItems, addToCart, searchTerm }) => {
   //   console.log(foodavi);
   return (
-    <div className="transition duration-500 ease-in-out flex flex-wrap justify-evenly">
+    <div className="animate-bounceIn flex flex-wrap justify-evenly">
       {foodItems.filter(isSearched(searchTerm)).map((item, key) => {
         return (
           <div
             key={key}
-            className="flex flex-col md:flex-row p-5 rounded-lg shadow-lg mb-10"
+            className="animate-bounceIn flex flex-col md:flex-row p-5 rounded-lg shadow-lg mb-10"
           >
             <div className="flex w-72 md:w-44 mb-7">
               <img

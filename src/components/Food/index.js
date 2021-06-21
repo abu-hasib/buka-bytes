@@ -12,9 +12,7 @@ const Food = () => {
   const [open, setOpen] = useState(true);
   const [cart, setCart] = useState([]);
 
-  useEffect(() => {
-    // history.push("/dashboard/food");
-  });
+  useEffect(() => {});
 
   function onSearchChange(e) {
     // console.log(e.target.value);

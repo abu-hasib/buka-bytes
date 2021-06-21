@@ -41,3 +41,7 @@
     transform: translateX(25%);
   }
 }
+
+.test {
+  transition: all 3s cubic-bezier(0.77, 0, 0.18, 1);
+}

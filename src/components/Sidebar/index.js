@@ -26,7 +26,7 @@ const Sidebar = () => {
           alt=""
         />
         <h1 className="inline text-3xl text-white font-semibold ml-2">
-          easywire
+          yakoyo
         </h1>
       </Link>
       <ul className="text-white text-left">

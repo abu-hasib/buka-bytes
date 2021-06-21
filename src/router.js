@@ -30,10 +30,6 @@ const routes = [
     path: "/dashboard",
     component: Food,
   },
-  // {
-  //   path: "/about",
-  //   component: Home,
-  // },
   {
     path: "/",
     exact: true,
@@ -55,8 +51,6 @@ const Navigation = () => {
             />
           );
         })}
-        {/* <Route path="/food" component={Food} /> */}
-        {/* <Route path="/" component={Home} /> */}
       </Switch>
     </Router>
   );
@@ -67,8 +61,6 @@ const GotoLink = ({ link, activeOnlyWhenExact }) => {
     path: link.to,
     exact: activeOnlyWhenExact,
   });
-
-  // console.log(match);
 
   return (
     <li
