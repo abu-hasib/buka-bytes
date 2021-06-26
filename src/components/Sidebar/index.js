@@ -18,7 +18,7 @@ const menu = [
 
 const Sidebar = () => {
   return (
-    <div className="row-start-1 col-span-2 bg-green-600 min-h-screen sm:block hidden py-3 px-2">
+    <div className="row-start-1 col-start-1 col-end-3 bg-green-600 min-h-screen xl:block hidden py-3 px-2">
       <Link to="/" className="flex justify-start items-center mb-6">
         <img
           className="h-10 w-auto sm:h-10"

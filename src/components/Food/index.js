@@ -45,7 +45,7 @@ const Food = () => {
   return (
     // <div className="container mx-auto">
     <div className="grid grid-cols-12 grid-rows-2 h-screen">
-      <div className="flex justify-center py-6 items-center bg-white border-b border-solid border-gray-200 sm:col-start-3 col-start-1 col-end-13 row-start-1 h-12 sticky z-50">
+      <div className="flex justify-center py-6 items-center bg-white border-b border-solid border-gray-200 xl:col-start-3 col-start-1 col-span-full row-start-1 h-12 sticky z-50">
         <form className="ml-auto relative">
           <svg
             width="20"
