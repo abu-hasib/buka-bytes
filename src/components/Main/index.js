@@ -2,11 +2,19 @@ import Menu from "components/Menu";
 import Restaurant from "components/Restaurant";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import {} from "@heroicons/react/outline/";
 import "./index.css";
 
-const Main = ({ foodItems, addToCart, searchTerm }) => {
+const Main = ({ foodItems, addToCart, searchTerm, toggleSidebar }) => {
   return (
     <div className="relative xl:col-start-3 col-start-1 col-span-full row-start-1 pt-16 overflow-scroll min-h-screen">
+      <div
+        className="bg-black w-16 h-16 rounded-full drop-shadow-2xl fixed bottom-20 right-14 z-50 flex items-center justify-center xl:hidden"
+        onClick={toggleSidebar}
+      >
+        <span className="text-white text-4xl">=</span>
+      </div>
+
       {/* <Cart open={open} cartItems={cart} /> */}
       {/* <Menu
           foodItems={foodItems}

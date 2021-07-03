@@ -16,9 +16,15 @@ const menu = [
   { title: "About", icon: InfoIcon, to: "/dashboard/about" },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ sideOpen, toggleSidebar, mobile }) => {
   return (
-    <div className="row-start-1 col-start-1 col-end-3 bg-green-600 min-h-screen xl:block hidden py-3 px-2">
+    <div
+      className={
+        (sideOpen ? "z-50 shadow-xl translate-x-5 " : "hidden ") +
+        (mobile ? "" : "z-50 shadow-xl translate-x-5 ") +
+        "row-start-1 col-start-1 col-end-3 bg-green-600 min-h-screen py-3 px-2 transition duration-500 xl:block ease-in-out"
+      }
+    >
       <Link to="/" className="flex justify-start items-center mb-6">
         <img
           className="h-10 w-auto sm:h-10"
@@ -32,7 +38,7 @@ const Sidebar = () => {
       <ul className="text-white text-left">
         {menu.map((item, key) => {
           return (
-            <GotoLink key={key} link={item} />
+            <GotoLink key={key} link={item} toggleSidebar={toggleSidebar} />
             // <li
             //   key={key}
             //   className="font-normal py-2 px-2 my-3 rounded-md w-full bg-gray-700 bg-opacity-20"
@@ -47,6 +53,7 @@ const Sidebar = () => {
           );
         })}
       </ul>
+      <div></div>
     </div>
   );
 };
