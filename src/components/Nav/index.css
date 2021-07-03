@@ -1,0 +1,17 @@
+.text-animate {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+.text-animate-exit {
+  transform: translate3d(0, 100%, 0);
+  opacity: 0;
+}
+
+.test {
+  transition: all 0.7s cubic-bezier(0.77, 0, 0.18, 1);
+}
+
+.poly {
+  clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+}

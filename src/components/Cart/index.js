@@ -1,13 +1,19 @@
 import ShoppingCartIcon from "@heroicons/react/outline/ShoppingCartIcon";
 import Pay from "components/Pay";
 import React, { useState, useEffect } from "react";
+import { formatCurrency } from "../global";
 
 const Cart = ({ open, cartItems }) => {
   const [total, setTotal] = useState(0);
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     setTotal(handleTotal(cartItems));
   }, [cartItems]);
+
+  const handleOnChange = (e) => {
+    setEmail(e.target.value);
+  };
 
   return (
     <div
@@ -23,9 +29,9 @@ const Cart = ({ open, cartItems }) => {
         </div>
         <p className="">
           Total:{" "}
-          <span className="font-light text-green-300">
+          <span className="font-normal text-green-500">
             {/* <Total cart={cartItems}></Total> */}
-            {formatCurrency(handleTotal(cartItems))}
+            {formatCurrency(total)}
           </span>
         </p>
       </div>
@@ -37,9 +43,9 @@ const Cart = ({ open, cartItems }) => {
               alt={item.imgUrl}
               className="w-14 h-14 col-start-1 row-start-1"
             />
-            <div className="col-span-2 justify-self-start font-light">
+            <div className="col-span-2 justify-self-start font-normal">
               <p className="text-lg text-left">{item.item}</p>
-              <span className="text-green-400 mr-4">{item.price}</span>
+              <span className="text-green-500 mr-4">{item.price}</span>
               <span className="text-sm text-gray-500">
                 Quantity: {item.quantity}
               </span>
@@ -47,13 +53,13 @@ const Cart = ({ open, cartItems }) => {
           </li>
         ))}
       </ul>
-      {/* <button
-        type="button"
-        className="bg-green-100 text-green-600 text-base font-semibold px-6 py-2 rounded-lg"
-      >
-        Checkout
-      </button> */}
-      <Pay amount={total} />
+      <input
+        placeholder="enter email for receipt"
+        className="w-56 h-5 outline-none rounded-md p-4 mb-5 ring-1 ring-gray-400 focus:ring-green-500"
+        onChange={handleOnChange}
+        defaultValue={email}
+      />
+      <Pay amount={total} email={email} disabled={total <= 0} />
     </div>
   );
 };
@@ -63,14 +69,5 @@ const handleTotal = (cart) =>
     // console.log(`prev: ${acc} + curr: ${curr.price}`);
     return acc + curr.price * curr.quantity;
   }, 0);
-
-const formatCurrency = (number) => {
-  const formatter = new Intl.NumberFormat("en-NG", {
-    style: "currency",
-    currency: "NGN",
-  });
-
-  return formatter.format(number);
-};
 
 export default Cart;

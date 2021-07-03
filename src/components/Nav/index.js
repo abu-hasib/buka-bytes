@@ -2,21 +2,33 @@
 import { Fragment } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
-import { useHistory } from "react-router";
+import veggies from "../../images/veggieshome.jpg";
+import "./index.css";
 
 const navigation = [
-  { name: "Food", href: "/food" },
+  { name: "Food", href: "/dashboard/food" },
   { name: "Laundry", href: "#" },
   { name: "Pharmacy", href: "#" },
   { name: "Grocery", href: "#" },
 ];
 
-export default function Home() {
-  let history = useHistory();
+// function sleep(ms) {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
-  function onNavigate() {
-    history.push(`/food`);
-  }
+export default function Home() {
+  // const [entry, setEntry] = useState(true);
+
+  // const handleShuffle = async () => {
+  //   console.log("before animating...");
+  //   setEntry(!entry);
+
+  //   await sleep(20000);
+  //   // setEntry(!entry);
+  // };
+
+  // handleShuffle();
+
   return (
     <Popover className="bg-white overflow-hidden">
       {({ open }) => (
@@ -124,9 +136,19 @@ export default function Home() {
 
               <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                 <div className="sm:text-center lg:text-left">
-                  <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                    <span className="block xl:inline">Good and Safe food</span>{" "}
-                    <span className="block text-indigo-600 xl:inline">
+                  <h1
+                    className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl"
+                    // onChange={handleShuffle}
+                  >
+                    <span
+                      className={
+                        // (entry ? "text-animate" : "text-animate-exit") +
+                        "test mb-5 block xl:inline"
+                      }
+                    >
+                      Good and Safe food
+                    </span>{" "}
+                    <span className="block text-green-500 xl:inline">
                       at your comfort
                     </span>
                   </h1>
@@ -138,9 +160,9 @@ export default function Home() {
                   <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                     <div className="rounded-md shadow">
                       <a
-                        href="/"
-                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                        onClick={onNavigate}
+                        href="/dashboard/food"
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10"
+                        // onClick={onNavigate}
                       >
                         Get started
                       </a>
@@ -148,7 +170,7 @@ export default function Home() {
                     <div className="mt-3 sm:mt-0 sm:ml-3">
                       <a
                         href="/"
-                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 md:py-4 md:text-lg md:px-10"
                       >
                         See more
                       </a>
@@ -160,8 +182,8 @@ export default function Home() {
           </div>
           <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             <img
-              className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
-              src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+              className="poly animate-bounceIn h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
+              src={veggies}
               alt=""
             />
           </div>
