@@ -1,88 +1,87 @@
 import React from "react";
+import foodavi from "images/food.jpg";
+
+const restaurants = [
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+  { name: "Tush Canteen", img: foodavi },
+];
 
 const Restaurant = () => {
   return (
-    <div>
-      <div className="animate-bounceIn flex flex-wrap justify-evenly">
-        <div className="flex flex-col md:flex-row p-5 rounded-lg shadow-lg mb-10">
-          <div className="flex w-72 md:w-44 mb-7">
-            <img
-              src={""}
-              alt=""
-              className="inset-0 w-full h-full object-cover object-center rounded-lg mx-auto"
-            />
-          </div>
-          <form className="flex-auto pl-0 md:pl-4">
-            <div className="flex flex-wrap items-baseline">
-              <h1 className="w-full flex-none font-semibold text-xl text-left mb-2.5">
-                Iya Risi
-              </h1>
-              <div className="text-4xl leading-7 font-bold text-green-500"></div>
-              <div className="text-sm font-medium text-gray-400 ml-3">
-                In stock
-              </div>
+    <div className="animate-bounceIn container mx-auto pb-10">
+    <div className="flex flex-wrap justify-evenly lg:gap-x-2 gap-y-10 lg:px-2">
+      {restaurants.map((restaurant) => {
+        return (
+          <div className="grid pb-10 grid-cols-1 shadow-md rounded-lg">
+            <div className="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black">
+              <p className="text-sm font-medium text-white sm:mb-1">
+                Entire house
+              </p>
+              <h2 className="text-2xl font-semibold text-white sm:text-xl sm:leading-7">
+                Beach House in Collingwood
+              </h2>
             </div>
-            <div className="flex items-baseline my-8">
-              <div className="space-x-2 flex text-sm font-medium">
-                <label>
-                  <input
-                    className="w-9 h-9 flex items-center justify-center rounded-full bg-purple-700 text-white"
-                    name="size"
-                    type="radio"
-                    value="xs"
-                    // checked
-                  />
-                  XS
-                </label>
-                <label>
-                  <input
-                    className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-gray-200"
-                    name="size"
-                    type="radio"
-                    value="s"
-                  />
-                  S
-                </label>
-              </div>
-              {/* <div className="ml-3 text-sm text-gray-500 underline">
-            Size Guide
-          </div> */}
-            </div>
-            <div className="flex space-x-1 mb-4 text-sm font-semibold">
-              <div className="flex-auto flex space-x-3">
-                <button
-                  className="w-2/3 flex items-center justify-center rounded-full bg-green-500 text-white"
-                  type="submit"
+            <div className="col-start-1 row-start-2 px-4 sm:pb-3">
+              <div className="flex items-center text-sm font-normal my-5 sm:mt-2 sm:mb-4">
+                <svg
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  className="text-green-600"
                 >
-                  Buy now
-                </button>
-                <button
-                  className="w-9/12 flex items-center justify-center rounded-full bg-purple-50 text-green-500"
-                  type="button"
-                >
-                  Add to cart
-                </button>
-              </div>
-              <button
-                className="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-green-500"
-                type="button"
-                aria-label="like"
-              >
-                <svg width="20" height="20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
-                  />
+                  <path d="M9.05 3.691c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.372 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.539 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.783.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.363-1.118l-2.8-2.034c-.784-.57-.381-1.81.587-1.81H7.03a1 1 0 00.95-.69L9.05 3.69z" />
                 </svg>
+                <div className="ml-1">
+                  <span className="text-black pr-1">4.94</span>
+                  <span className="sm:hidden md:inline text-gray-400">
+                    (128)
+                  </span>
+                </div>
+                <div className="text-base text-gray-400 font-normal mx-2">
+                  ·
+                </div>
+                <div className="text-gray-400">Collingwood, Ontario</div>
+              </div>
+              <hr className="w-16 border-gray-300 hidden" />
+            </div>
+            <div className="col-start-1 row-start-3 space-y-3 px-4">
+              <p className="flex items-center text-black text-sm font-medium">
+                <img
+                  src={foodavi}
+                  alt=""
+                  className="w-6 h-6 rounded-full mr-2 bg-gray-100"
+                />
+                Hosted by Kevin Francis
+              </p>
+              <button
+                type="button"
+                className="flex bg-green-100 text-green-700 text-base font-semibold px-6 py-2 rounded-lg"
+              >
+                Check availability
               </button>
             </div>
-            <p className="text-sm text-gray-500">
-              Free delivery on all local orders.
-            </p>
-          </form>
-        </div>
-      </div>
+
+            <div className="col-start-1 row-start-1 flex">
+              <div className="w-full grid grid-cols-3 grid-rows-2 gap-2">
+                <div className="relative col-span-3 row-span-2">
+                  <img
+                    src={foodavi}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover bg-gray-100 sm:rounded-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
     </div>
   );
 };

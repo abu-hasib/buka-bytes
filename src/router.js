@@ -56,7 +56,7 @@ const Navigation = () => {
   );
 };
 
-const GotoLink = ({ link, activeOnlyWhenExact }) => {
+const GotoLink = ({ link, activeOnlyWhenExact, toggleSidebar }) => {
   let match = useRouteMatch({
     path: link.to,
     exact: activeOnlyWhenExact,
@@ -68,9 +68,10 @@ const GotoLink = ({ link, activeOnlyWhenExact }) => {
         (match ? "bg-gray-700 bg-opacity-25" : "") +
         "font-normal py-2 px-2 my-3 rounded-md w-full"
       }
+      onClick={toggleSidebar}
     >
-      <Link to={link.to}>
-        {<link.icon className="h-6 w-6 inline" />} {link.title}
+      <Link to={link.to} className="inline-block w-full">
+        {<link.icon className="h-6 w-6 inline-block" />} {link.title}
       </Link>
     </li>
   );

@@ -11,8 +11,20 @@ const Food = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(true);
   const [cart, setCart] = useState([]);
+  const [sideOpen, setSideOpen] = useState(true);
+  const [mobile, setMobile] = useState(false);
 
-  useEffect(() => {});
+  useEffect(() => {
+    console.log("%%%%: ", window.innerWidth);
+    if (window.innerWidth < 1280) {
+      setMobile(true);
+    } else {
+      setMobile(false);
+    }
+    if (window.innerWidth < 1280 && mobile === true) {
+      setSideOpen(false);
+    }
+  }, [mobile]);
 
   function onSearchChange(e) {
     // console.log(e.target.value);
@@ -42,10 +54,15 @@ const Food = () => {
     setCart(() => [...updatedCart]);
   }
 
+  function toggleSidebar() {
+    console.log("here");
+    setSideOpen(!sideOpen);
+  }
+
   return (
     // <div className="container mx-auto">
-    <div className="grid grid-cols-12 grid-rows-2 h-screen">
-      <div className="flex justify-center py-6 items-center bg-white border-b border-solid border-gray-200 sm:col-start-3 col-start-1 col-end-13 row-start-1 h-12 sticky z-50">
+    <div className="grid grid-cols-12 grid-rows-2 h-screen relative">
+      <div className="flex justify-center py-6 items-center bg-white border-b border-solid border-gray-200 xl:col-start-3 col-start-1 col-span-full row-start-1 h-12 sticky z-50">
         <form className="ml-auto relative">
           <svg
             width="20"
@@ -83,8 +100,14 @@ const Food = () => {
         foodItems={foodItems}
         addToCart={addToCart}
         searchTerm={searchTerm}
+        toggleSidebar={toggleSidebar}
       />
-      <Sidebar />
+      <Sidebar
+        sideOpen={sideOpen}
+        mobile={mobile}
+        toggleSidebar={toggleSidebar}
+        className={sideOpen ? "hidden" : ""}
+      />
     </div>
     // </div>
   );
