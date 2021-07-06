@@ -18,7 +18,7 @@ const Restaurant = () => {
       <div className="flex flex-wrap justify-evenly lg:gap-x-2 gap-y-10 lg:px-2">
         {restaurants.map((restaurant) => {
           return (
-            <div className="grid pb-10 grid-cols-1 shadow-md rounded-lg w-11/12 lg:w-auto">
+            <div className="grid pb-10 grid-cols-1 shadow-md rounded-lg w-11/12 md:w-auto">
               <div className="relative z-10 col-start-1 row-start-1 px-4 pt-40 pb-3 bg-gradient-to-t from-black">
                 <p className="text-sm font-medium text-white sm:mb-1">
                   {restaurant.type}
