@@ -20,9 +20,8 @@ const Sidebar = ({ sideOpen, toggleSidebar, mobile }) => {
   return (
     <div
       className={
-        (sideOpen ? "z-50 shadow-xl translate-x-5 " : "hidden ") +
-        (mobile ? "" : "z-50 shadow-xl translate-x-5 ") +
-        "row-start-1 col-start-1 col-end-3 bg-green-600 min-h-screen py-3 px-2 transition duration-500 xl:block ease-in-out"
+        (sideOpen ? "z-50 shadow-xl translate-x-5 col-span-7 " : "hidden ") +
+        "row-start-1 col-start-1 lg:col-end-3 bg-green-600 min-h-screen py-3 px-2 transition duration-500 xl:block ease-in-out"
       }
     >
       <Link to="/" className="flex justify-start items-center mb-6">
